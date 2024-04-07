@@ -1,4 +1,4 @@
-package com.java.Class51;
+package com.java.Class51_DragAndDrop;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
