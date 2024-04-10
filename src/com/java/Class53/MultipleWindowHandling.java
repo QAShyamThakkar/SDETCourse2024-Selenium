@@ -1,6 +1,5 @@
-package com.java.Class52_Alert_iFrame_MultipleWindowHandles;
+package com.java.Class53;
 
-import com.java.Class53.WindowHandlesUtil;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,26 +19,14 @@ public class MultipleWindowHandling {
         WebElement startFree = driver.findElement(By.xpath("//div[@class=\"content__wrapper \"]//a[contains(text(), \"Start free trial\")]"));
         startFree.click();
 
-        //1. Switching to new Window
-            //Current Tab ID
-        String originalWindowID = driver.getWindowHandle();
+        //Switching to new Window
+        WindowHandlesUtil.switchToNewWindow(driver);
 
-            //All Tab ID
-        Set<String> listOfAllTabIDs = driver.getWindowHandles();
-
-            //Just iterating through all Tab IDs
-        for (String eachTabID:listOfAllTabIDs){
-            if (!originalWindowID.equals(eachTabID)){
-                driver.switchTo().window(eachTabID);
-            }
-        }
-
-//        2. Actions that we have to perform on the new window
         WebElement firstName = driver.findElement(By.xpath("//input[contains(@id, \"UserFirstName\")]"));
         firstName.sendKeys("Shyam");
 
-        //3. Switching back to original window
-        driver.switchTo().window(originalWindowID);
+        //Switching back to original window
+        WindowHandlesUtil.switchToOriginalWindow(driver);
     }
 
 
