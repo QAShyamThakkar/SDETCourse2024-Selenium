@@ -16,6 +16,7 @@ public class MultipleWindowHandling {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://www.salesforce.com/in/?ir=1");
 
+        
         WebElement startFree = driver.findElement(By.xpath("//div[@class=\"content__wrapper \"]//a[contains(text(), \"Start free trial\")]"));
         startFree.click();
 

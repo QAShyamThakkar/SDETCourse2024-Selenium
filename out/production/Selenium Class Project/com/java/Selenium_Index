@@ -1,0 +1,60 @@
+1. HTML, CSS and Selnium, set up
+
+2. Locators
+
+ID
+Class
+
+
+Name
+TagName
+
+LinkText
+PartialLinkText
+
+Xpath
+CSS
+
+
+Xpath:
+	Basic Notation  /, //, @, [], *, ..
+	Function : text(), contains(), and or
+	Relations:
+
+3. Basic Commands
+
+4. Waits
+
+5. Commands:
+	1. Radio
+	2. CheckBox
+	3. Select Class (WebElement dropdown)
+	4. Actions Clas(driver)
+
+		- .build.perform
+
+		a. Hover Mouse
+		b. Scroll
+		c. Drag and Drop
+		d. Keyboard and Mouse actions
+	5. Aletrs
+		aletrs.accept
+		aletrs.dismiss
+		aletrs.getText()
+		aletrs.sendKeys()
+
+	6. iFrame
+	7. Multiple window handling
+
+	Reusable Methods - Convert to Utils class
+
+	8. JS Executor
+
+	9.  File Upload
+	10. File Download
+	11. Capture screenshot
+	12. To handle Table
+	13. To handle calendar
+	14. Excel
+
+6. Exception selenium
