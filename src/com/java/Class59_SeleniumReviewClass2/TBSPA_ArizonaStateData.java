@@ -23,20 +23,23 @@ public class TBSPA_ArizonaStateData {
             count++;
             WebElement dropdown = driver.findElement(By.id("frmstate"));
             Select select = new Select(dropdown);
-            select.selectByVisibleText("Arizona");
+            select.selectByVisibleText("Virginia");
 
             WebElement submitBth = driver.findElement(By.xpath("//input[@name=\"submit\"]"));
             submitBth.click();
 
-//           List<WebElement> firmLinkList = driver.findElements(By.xpath("/table[@id=\"results\"]/tbody/tr/td[1]"));
-//           totalFirm=firmLinkList.size();
+            //List of all Firms
+           List<WebElement> firmLinkList = driver.findElements(By.xpath("//table[@id=\"results\"]/tbody/tr"));
+           totalFirm=firmLinkList.size();
 
+            //Clicking on each firm out of Total 25 firms
             String xpathForListOFRow = "//table[@id=\"results\"]/tbody/tr[%s]";
             String actualXpathForFirmLink = String.format(xpathForListOFRow, count);
             WebElement firmLink = driver.findElement(By.xpath(actualXpathForFirmLink));
             firmLink.click();
 
-                List<WebElement> firmAllData = driver.findElements(By.xpath("//table[@align=\"center\"][1]//tr/td[@colspan=\"2\"]"));
+            // Retrieving data from each firm data page
+            List<WebElement> firmAllData = driver.findElements(By.xpath("//table[@align=\"center\"][1]//tr/td[@colspan=\"2\"]"));
                 for (WebElement eachData : firmAllData) {
                     System.out.print(eachData.getText() + " | ");
                 }
@@ -45,7 +48,6 @@ public class TBSPA_ArizonaStateData {
                 WebElement backToSelection = driver.findElement(By.name("bsubmit"));
                 backToSelection.click();
 
-
-        } while (true);
+        } while (count<totalFirm);
     }
 }
