@@ -22,7 +22,7 @@ public class tbspaFinalCode {
         String state;
         List<WebElement> listOfState = select.getOptions();
 
-        for (int i = 1; i <= listOfState.size(); i++) {
+        for (int i = 5; i <= listOfState.size(); i++) {
 
             int count = 0, totalFirm=0;
 //        List<WebElement> firmLinkList;
@@ -41,25 +41,30 @@ public class tbspaFinalCode {
                 WebElement submitBth = driver.findElement(By.xpath("//input[@name=\"submit\"]"));
                 submitBth.click();
 
-                //List of all Firms
-                List<WebElement> firmLinkList = driver.findElements(By.xpath("//table[@id=\"results\"]/tbody/tr"));
-                totalFirm=firmLinkList.size();
+                try {
+                    //List of all Firms
+                    List<WebElement> firmLinkList = driver.findElements(By.xpath("//table[@id=\"results\"]/tbody/tr"));
+                    totalFirm=firmLinkList.size();
 
-                //Clicking on each firm out of Total 25 firms
-                String xpathForListOFRow = "//table[@id=\"results\"]/tbody/tr[%s]";
-                String actualXpathForFirmLink = String.format(xpathForListOFRow, count);
-                WebElement firmLink = driver.findElement(By.xpath(actualXpathForFirmLink));
-                firmLink.click();
+                    //Clicking on each firm out of Total 25 firms
+                    String xpathForListOFRow = "//table[@id=\"results\"]/tbody/tr[%s]";
+                    String actualXpathForFirmLink = String.format(xpathForListOFRow, count);
+                    WebElement firmLink = driver.findElement(By.xpath(actualXpathForFirmLink));
+                    firmLink.click();
 
-                // Retrieving data from each firm data page
-                List<WebElement> firmAllData = driver.findElements(By.xpath("//table[@align=\"center\"][1]//tr/td[@colspan=\"2\"]"));
-                for (WebElement eachData : firmAllData) {
-                    System.out.print(eachData.getText() + " | ");
+                    System.out.print(count +" | "+state +" | ");
+                    // Retrieving data from each firm data page
+                    List<WebElement> firmAllData = driver.findElements(By.xpath("//table[@align=\"center\"][1]//tr/td[@colspan=\"2\"]"));
+                    for (WebElement eachData : firmAllData) {
+                        System.out.print(eachData.getText() + " | ");
+                    }
+                    System.out.println();
+
+                    WebElement backToSelection = driver.findElement(By.name("bsubmit"));
+                    backToSelection.click();
+                }catch (Exception e){
+                    System.out.println(state +": No Data Avialble" );
                 }
-                System.out.println();
-
-                WebElement backToSelection = driver.findElement(By.name("bsubmit"));
-                backToSelection.click();
 
             } while (count<totalFirm);
 
